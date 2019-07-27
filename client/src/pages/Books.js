@@ -8,12 +8,13 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
+import StudentNav from "../components/StudentNav";
+
 class Books extends Component {
   state = {
     books: [],
-    title: "",
-    author: "",
-    bookSearch: []
+    bookSearch: [],
+    navbarIndex: 1
   };
 
   componentDidMount() {
@@ -70,68 +71,118 @@ class Books extends Component {
       .catch(err => console.log(err));
   }
 
+  navBarSelection = (index) => {
+
+    this.setState({ navbarIndex: index });
+
+  }
+
 
   render() {
     return (
       <Container fluid>
-        <Row>
-          <Col size="md-6">
-            <Jumbotron>
-              <h1>Search for book by title</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <FormBtn
-               // disabled={!(this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
+        <StudentNav navBarSelection={this.navBarSelection}></StudentNav>
+
+        {this.state.navbarIndex == 1 ? (
+          <Row>
+
+            <Col size="md-12">
+              <Jumbotron>
+                <h1>Books On My List</h1>
+              </Jumbotron>
+              {this.state.books.length ? (
+                <List>
+                  {this.state.books.map(book => (
+                    <ListItem key={book._id}>
+                      <Link to={"/books/" + book._id}>
+                        <strong>
+                          {book.title} by {book.author}
+                        </strong>
+                      </Link>
+                      <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                  <h3>No Results to Display</h3>
+                )}
+            </Col>
+
+          </Row>
+        ) : (
+
+            <span />
+
+          )}
+
+        {this.state.navbarIndex == 2 ? (
+          <Row>
+            <Col size="md-12">
+              <Jumbotron>
+                <h1>Profile</h1>
+              </Jumbotron>
+            </Col>
+          </Row>
+
+        ) : (
+
+            <span />
+
+          )}
+
+
+
+
+        {this.state.navbarIndex == 3 ? (
+
+          <Row>
+            <Col size="md-12">
+              <Jumbotron>
+                <h1>Search for book by title</h1>
+              </Jumbotron>
+              <form>
+                <Input
+                  value={this.state.title}
+                  onChange={this.handleInputChange}
+                  name="title"
+                  placeholder="Title (required)"
+                />
+                <FormBtn
+                  // disabled={!(this.state.title)}
+                  onClick={this.handleFormSubmit}
+                >
+                  Submit Book
               </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+              </form>
+            </Col>
+            
+            <Col size="md-12">
+              {this.state.bookSearch.length ? (
+                <List>
+                  {this.state.bookSearch.map((book, index) => (
+                    <ListItem key={index}>
                       <strong>
-                        {book.title} by {book.author}
+                        {book.volumeInfo.title} by {book.volumeInfo.authors}
                       </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-                <h3>No Results to Display</h3>
-              )}
-          </Col>
-        </Row>
-        <Row>
-          {this.state.bookSearch.length ? (
-            <List>
-              {this.state.bookSearch.map((book, index) => (
-                <ListItem key={index}>
-                  <strong>
-                    {book.volumeInfo.title} by {book.volumeInfo.authors}
-                  </strong>
-                  <AddBtn onClick={()=> this.saveBook(book.volumeInfo.title, book.volumeInfo.authors)}></AddBtn>
-                </ListItem>
-              ))}
-            </List>
-          ) : (
-              <h3>No Results to Display</h3>
-            )}
-        </Row>
+                      <AddBtn onClick={() => this.saveBook(book.volumeInfo.title, book.volumeInfo.authors)}></AddBtn>
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                  <h3>No Results to Display</h3>
+
+                )}
+            </Col>
+          </Row>
+
+        ) : (
+
+            <span />
+
+          )}
+
+
+
       </Container>
 
 
