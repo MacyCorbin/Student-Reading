@@ -88,7 +88,7 @@ class Books extends Component {
 
             <Col size="md-12">
               <Jumbotron>
-                <h1>Books On My List</h1>
+                <h1>Readings</h1>
               </Jumbotron>
               {this.state.books.length ? (
                 <List>
@@ -121,6 +121,9 @@ class Books extends Component {
               <Jumbotron>
                 <h1>Profile</h1>
               </Jumbotron>
+              <div>Hi, <span></span></div>
+              <div>Your lexile level is <span></span></div>
+              <div>Your grade is <span></span></div>
             </Col>
           </Row>
 
@@ -138,7 +141,7 @@ class Books extends Component {
           <Row>
             <Col size="md-12">
               <Jumbotron>
-                <h1>Search for book by title</h1>
+                <h1>Book Search</h1>
               </Jumbotron>
               <form>
                 <Input
