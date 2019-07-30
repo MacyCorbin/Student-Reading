@@ -13,7 +13,7 @@ function MainNav(props) {
 
     <span className="navbar-right">
       <a className="navbar-brand" href="#">
-          Register/Log In
+          Register
       </a>  
     </span>
 
