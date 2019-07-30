@@ -1,8 +1,9 @@
 import React from "react";
+import "./StudentNav.css"
 
 function StudentNav(props) {
   return (
-    <nav className="navbar navbar-dark bg-primary">
+    <nav className="navbar navbar-dark bg">
 
     <span>
       <a className="navbar-brand" href="#" onClick={()=>props.navBarSelection(1)}>
