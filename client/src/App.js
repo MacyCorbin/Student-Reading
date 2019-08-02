@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/Main";
-import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Header from "./components/Header";
+import Student from "./pages/Student";
+
 import Books from "./pages/Books";
 
 function App() {
@@ -13,8 +14,8 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/books" component={Books} />
-          <Route exact path="/books/:id" component={Detail} />
+          <Route exact path="/books" component={Books}/>
+          <Route exact path="/student" component={Student} />
           <Route component={NoMatch} />
         </Switch>
       </div>
