@@ -1,5 +1,4 @@
 import React from "react";
-import "./StudentNav.css"
 
 function StudentNav(props) {
   return (
@@ -14,6 +13,9 @@ function StudentNav(props) {
       </a>
       <a className="navbar-brand" href="#" onClick={()=>props.navBarSelection(3)}>
         Book Search
+      </a>
+      <a className="navbar-brand" href="#" onClick={()=>props.navBarSelection(4)}>
+        Book Reader
       </a>
     </span>
 

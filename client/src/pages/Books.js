@@ -59,6 +59,10 @@ class Books extends Component {
       .then(response => console.log(response))
       .catch(err => console.log(err))
 
+    API.getBooks()
+    .then(response => console.log(response))
+    .catch(err => console.log(err))
+
 
   }
 
@@ -122,7 +126,7 @@ class Books extends Component {
                     <ListItem key={book._id}>
                       <Link to={"/books/" + book._id}>
                         <strong>
-                          {book.title} by {book.author}
+                          {book.book_name} by {book.author}
                         </strong>
                       </Link>
                     </ListItem>

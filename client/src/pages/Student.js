@@ -9,6 +9,7 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 import StudentNav from "../components/StudentNav";
+import BookViewer from "../components/bookViewer";
 
 class Books extends Component {
   state = {
@@ -74,6 +75,7 @@ class Books extends Component {
   navBarSelection = (index) => {
 
     this.setState({ navbarIndex: index });
+    //window.initialize();
 
   }
 
@@ -81,7 +83,7 @@ class Books extends Component {
   render() {
     return (
       <Container fluid>
-        <StudentNav navBarSelection={this.navBarSelection}></StudentNav>
+        <StudentNav navBarSelection={this.navBarSelection} showViewer={this.showViewer}></StudentNav>
 
         {this.state.navbarIndex == 1 ? (
           <Row>
@@ -96,7 +98,7 @@ class Books extends Component {
                     <ListItem key={book._id}>
                       <Link to={"/books/" + book._id}>
                         <strong>
-                          {book.title} by {book.author}
+                          {book.book_name} by {book.author}
                         </strong>
                       </Link>
                     </ListItem>
@@ -157,7 +159,7 @@ class Books extends Component {
               </FormBtn>
               </form>
             </Col>
-            
+
             <Col size="md-12">
               {this.state.bookSearch.length ? (
                 <List>
@@ -176,6 +178,20 @@ class Books extends Component {
                 )}
             </Col>
           </Row>
+
+        ) : (
+
+            <span />
+
+          )}
+
+
+        {this.state.navbarIndex == 4 ? (
+
+          <Row>
+            <BookViewer></BookViewer>
+          </Row>
+         
 
         ) : (
 
