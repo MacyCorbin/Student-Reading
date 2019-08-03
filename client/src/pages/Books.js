@@ -45,9 +45,7 @@ class Books extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-
-
-
+    
     if (this.state.title) {
 
       API.searchBook(this.state.title)

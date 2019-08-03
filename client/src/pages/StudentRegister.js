@@ -9,7 +9,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input,FormBtn} from "../components/LoginForm";
 import MainNav from "../components/MainNav";
 
-class Main extends Component {
+class StudentRegister extends Component {
     state = {
         navbarIndex: 1
       };
@@ -17,34 +17,27 @@ class Main extends Component {
         return (
             <Container fluid>
                 <MainNav navBarSelection={this.navBarSelection}></MainNav>
-                {this.state.navbarIndex == 1 ? (
-                    <Row>
-                        <Col size="md-12">
-                            <Jumbotron>
-                                <h1>Welcome to Book Buster!</h1>
-                                <h2>Book Buster is a learning tool that keeps students on track with reading goals and teachers
-                                    can view each student's progress.
-                               </h2>
-                            </Jumbotron>
-                        </Col>
-                    </Row>
-                ) : (
-                        <span />
-                    )}
+                <Jumbotron>
                     <Row>
                         <Col size="md-12">
                         <form>
                             <Input
-                            value={this.state.title}
+                            value={this.state.username}
                             onChange={this.handleInputChange}
                             name="Name"
                             placeholder="Name"
                             />
                             <Input
-                                value={this.state.title}
+                                value={this.state.password}
                                 onChange={this.handleInputChange}
                                 name="Password"
                                 placeholder="Password"
+                            />
+                            <Input
+                                value={this.state.level}
+                                onChange={this.handleInputChange}
+                                name="level"
+                                placeholder="Reading Level"
                             />
                             <FormBtn style="text-align: center"
                                 onClick={this.handleFormSubmit}
@@ -54,9 +47,11 @@ class Main extends Component {
                         </form>
                         </Col>
                     </Row>
+                    </Jumbotron>
                 <span />
             </Container>
+           
         );
     }
 }
-export default Main;
+export default StudentRegister;
