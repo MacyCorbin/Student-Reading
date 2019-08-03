@@ -6,13 +6,20 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-import { Input,FormBtn} from "../components/LoginForm";
+import { Input, FormBtn } from "../components/LoginForm";
 import MainNav from "../components/MainNav";
 
 class Main extends Component {
     state = {
         navbarIndex: 1
-      };
+    };
+
+    navBarSelection = (index) => {
+
+        this.setState({ navbarIndex: index });
+        //window.initialize();
+
+    }
 
 
     render() {
@@ -40,15 +47,15 @@ class Main extends Component {
 
                     )}
 
-                    <Row>
+                <Row>
 
-                        <Col size="md-12">
+                    <Col size="md-12">
                         <form>
                             <Input
-                            value={this.state.title}
-                            onChange={this.handleInputChange}
-                            name="Name"
-                            placeholder="Name"
+                                value={this.state.title}
+                                onChange={this.handleInputChange}
+                                name="Name"
+                                placeholder="Name"
                             />
 
                             <Input
@@ -61,14 +68,14 @@ class Main extends Component {
                             <FormBtn style="text-align: center"
 
                                 onClick={this.handleFormSubmit}
-                                >
+                            >
                                 Log In
                             </FormBtn>
                         </form>
 
-                        </Col>
+                    </Col>
 
-                    </Row>
+                </Row>
 
                 <span />
             </Container>
