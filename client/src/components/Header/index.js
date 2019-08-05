@@ -3,7 +3,7 @@ import "./Header.css"
 
 function Header() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white" style = {{ margin: "10px 30px"}}>
       <a className="navbar-brand" className="headerFont" href="/">
         BookBuster
       </a>

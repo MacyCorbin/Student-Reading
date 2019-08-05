@@ -20,6 +20,7 @@ class StudentRegister extends Component {
                 <Jumbotron>
                     <Row>
                         <Col size="md-12">
+                        <h2 style={{color:"#E26A25"}}> Student Register</h2>
                         <form>
                             <Input
                             value={this.state.username}

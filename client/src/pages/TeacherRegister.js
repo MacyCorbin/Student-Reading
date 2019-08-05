@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 // import AddBtn from "../components/AddBtn";
-import API from "../utils/API";
+import API from "../utils/API.js";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
@@ -20,6 +20,7 @@ class TeacherRegister extends Component {
                 <Jumbotron>
                     <Row>
                         <Col size="md-12">
+                                <h2 style={{color:"#E26A25"}}> Teacher Register</h2>
                                 <form >
                                     <Input
                                     value={this.state.username}

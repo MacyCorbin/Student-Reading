@@ -21,48 +21,6 @@ class Books extends Component {
     this.loadBooks();
   }
 
-  testAPI = () => {
-
-    //create student
-    const student = {
-    name: "eric",
-    username: "eric",
-    password: "eric",
-    lexile: 100,
-    }
-
-    //create teacher
-    const teacher = {
-      name: "teacher",
-      username: "teacher",
-      password: "teacher"
-    }
-
-    API.registerStudent(student);
-    API.registerTeacher(teacher);
-
-    API.login({username: "eric", password: "eric"})
-     .then(function(response){
-      console.log(response);
-     })
-     .catch(err => console.log(err))
-
-     API.login({username: "teacher", password: "teacher"})
-     .then(function(response){
-      console.log(response);
-     })
-     .catch(err => console.log(err))
-
-     API.createAssignment({due_date: new Date()});
-
-     API.getAssignments()
-      .then(response => console.log(response))
-      .catch(err => console.log(err))
-
-
-  }
-
-
   loadBooks = () => {
     API.getBooks()
       .then(res =>
@@ -71,6 +29,11 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -82,8 +45,6 @@ class Books extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    
-    this.testAPI();
 
 
 
@@ -99,10 +60,22 @@ class Books extends Component {
 
   }
 
-  navBarSelection = index => {
-    this.setState({navbarIndex: index});
+  saveBook = (title, author) => {
+    var authorString = author.toString();
+    console.log(title, authorString);
+    API.saveBook({
+      title: title,
+      author: authorString
+    })
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
   }
 
+  navBarSelection = (index) => {
+
+    this.setState({ navbarIndex: index });
+
+  }
 
 
   render() {
@@ -193,7 +166,7 @@ class Books extends Component {
                       <strong>
                         {book.volumeInfo.title} by {book.volumeInfo.authors}
                       </strong>
-                      <AddBtn onClick={() => this.saveBook(book.volumeInfo.title, book.volumeInfo.authors)}></AddBtn>
+                      <AddBtn onClick={() => this.updateBook()}></AddBtn>
                     </ListItem>
                   ))}
                 </List>

@@ -1,4 +1,13 @@
 .navbar{
 background-color: #99D8EA;
+color: white;
 }
 
+.teacherLink{
+    margin: 0 0 0 50%;
+}
+
+a:hover { 
+    color: #29B34C;
+    text-decoration: none;
+}

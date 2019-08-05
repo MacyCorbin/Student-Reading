@@ -3,20 +3,20 @@ import "./MainNav.css"
 
 function MainNav(props) {
   return (
-    <nav className="navbar navbar-dark bg">
+    <nav className="navbar navbar-dark bg" style = {{ paddingRight: "0px"}}>
 
     <span>
-      <a className="navbar-brand" href="/WhatWeDo" onClick={()=>props.navBarSelection(1)}>
-        What We Do
+      <a className="navbar" href="/WhatWeDo" onClick={()=>props.navBarSelection(1)}>
+        WHAT WE DO
       </a>
     </span>
 
-    <span className="navbar-right">
-      <a className="navbar-brand" href="/teacherregister">
-          Teacher Register
+    <span className="navbar">
+      <a className="navbar"  href="/teacherregister">
+          TEACHER REGISTER
       </a> 
-      <a className="navbar-brand" href="/studentregister">
-          Student Register
+      <a className="navbar" href="/studentregister">
+          STUDENT REGISTER
       </a>   
     </span>
 
