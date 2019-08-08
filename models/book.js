@@ -8,7 +8,7 @@ const bookSchema = new Schema({
   student_name: { type: String, required: true },
   book_name: {type: String, default: "not chosen"},
   authors: [String],
-  on_page: {type: Number, default: 0},
+  on_page: {type: Schema.Types.Mixed, default: 0},
   pages_read: {type: Number, default: 0},
   book_length: {type: Number, default: 0},
   due_date: {type: Date, required: true},

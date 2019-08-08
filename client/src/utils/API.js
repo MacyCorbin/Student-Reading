@@ -5,8 +5,8 @@ export default {
   getBooks: function() {
     return axios.get("/api/books");
   },
-  // Gets the book with the given id
-  getBook: function(id) {
+  // Gets the book with the given id//changed to get a student's books
+  getMyBooks: function(id) {
     return axios.get("/api/studentbooks/" + id);
   },
   updateBook: function(id, bookInfo){

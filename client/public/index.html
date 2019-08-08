@@ -113,7 +113,7 @@
           sessionStorage.setItem('bookBusterStudent', JSON.stringify(response.student));          
           
           if(window.location != window.origin + "/student"){
-          window.location = window.origin + "/student";
+          //window.location = window.origin + "/student";
             }
 
 
@@ -127,6 +127,25 @@
     }
   </script>
 
+  <div id="goodjob" style="opacity:0;width:100%;font-weight:bold;font-size:24px;font-family: 'News Cycle', 'Arial Narrow Bold', sans-serif;position:absolute;top: 45%;">
+    <div style="
+    border-radius: 2px;
+    background-color: #22B24C;
+    color: white;
+    text-align:center;width:30%;position:relative;margin:auto">
+    <span class="fa fa-check"></span>+1</div>
+    </div>
+<script>
+
+function displayGoodJob(){
+
+  $('#goodjob').animate({opacity:'1'}, 200).animate({opacity:'1'}, 300).animate({top:'30%', opacity:'0'}, 1000);
+  $("#goodjob").css('top', '45%');
+
+
+}
+
+</script>
 
 
 </body>

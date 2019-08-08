@@ -27,7 +27,7 @@ module.exports = {
         db.Student
           .find()
           .then(function (studentArr) {
-            //console.log(studentArr);
+            console.log(studentArr);
             studentArr.forEach(function (student) {
 
               var tempBook = {
@@ -37,7 +37,7 @@ module.exports = {
                 due_date: assignmentModel.due_date,
                 googlebook_id: assignmentModel.googlebook_id,
                 book_name: assignmentModel.book_name,
-                author: assignmentModel.author,
+                authors: assignmentModel.authors,
                 book_length: assignmentModel.book_length
               };
 
