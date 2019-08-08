@@ -170,11 +170,13 @@ class Books extends Component {
     var timer = this.state.timer;
     var book = this.state.books[this.state.bookIndex];
 
-    if(timer>0){
+    if(timer>1){
     this.setState((state)=>({timer: state.timer-1}));
     }else{
       console.log(book.book_name);
+      this.setState((state)=>({timer: state.timer-1}));
       API.updateBook(book._id, {pages_read: book.pages_read+1});
+      window.displayGoodJob();
       clearInterval(this.state.timerRef);
       this.setState({timerRef: null});
       this.loadBooks();
@@ -296,7 +298,7 @@ class Books extends Component {
             <div className="btn-group">
             <span style={{width: "50px"}} className="btn btn-success" onClick={this.prevPage}>{'<'}</span>
             <span style={{borderLeft:"1px solid green", width:"50px"}} className="btn btn-success" onClick={this.nextPage}>{'>'}</span>
-            <span className="btn">Go to page: <input type="text" style={{width:"50px"}} placeholder="go to page..." onKeyPress={this.goToPage} name="page" value={this.state.page} onChange={this.handleInputChange}></input></span>
+            <span className="btn">Go to page: <input type="text" style={{width:"50px"}} onKeyPress={this.goToPage} name="page" value={this.state.page} onChange={this.handleInputChange}></input></span>
             <span className="btn"><span className="fa fa-clock-o"></span>{this.state.timer}</span>
             </div>
             </Col>

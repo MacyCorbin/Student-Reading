@@ -27,7 +27,7 @@ module.exports = {
         db.Student
           .find()
           .then(function (studentArr) {
-            //console.log(studentArr);
+            console.log(studentArr);
             studentArr.forEach(function (student) {
 
               var tempBook = {
