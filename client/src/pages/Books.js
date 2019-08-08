@@ -26,12 +26,12 @@ class Books extends Component {
     //console.log({date: new Date()});
     //create student
     //console.log( JSON.parse(window.sessionStorage.getItem('google_profile')).fullName);
-   /* const student = {
+  /* const student = {
       id_token: window.sessionStorage.getItem('idtoken'),
       name: JSON.parse(window.sessionStorage.getItem('google_profile')).fullName
-    }*/
+    }
     
-    //API.registerStudent(student);
+    API.registerStudent(student);*/
 
     //create teacher
    /* const teacher = {
@@ -41,7 +41,11 @@ class Books extends Component {
     
     API.registerTeacher(teacher);*/
 
-    API.createAssignment({ due_date: new Date() });
+    API.createAssignment({     
+      googlebook_id: 's1gVAAAAYAAJ',
+      authors: ['eric', 'peggy', 'macy'],
+      due_date: new Date() 
+    });
 
     API.getAssignments()
       .then(response => console.log(response))
