@@ -11,7 +11,7 @@ function StudentNav(props) {
     </span>
 
     <span className="navbar-right">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="#" onClick={props.logout}>
           Logout
       </a>  
     </span>

@@ -38,6 +38,12 @@ class Main extends Component {
                                </h2>
                             </Jumbotron>
 
+                            <div>
+                                <div style={{margin:'auto', width:'200px', marginBottom:"10px"}} className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                            </div>
+
+                            <div style={{margin:"auto", width:"fit-content", display:"block"}} className="btn btn-success" id="enter">Enter</div>
+
                         </Col>
 
                     </Row>
@@ -46,36 +52,6 @@ class Main extends Component {
                         <span />
 
                     )}
-
-                <Row>
-
-                    <Col size="md-12">
-                        <form>
-                            <Input
-                                value={this.state.title}
-                                onChange={this.handleInputChange}
-                                name="Name"
-                                placeholder="Name"
-                            />
-
-                            <Input
-                                value={this.state.title}
-                                onChange={this.handleInputChange}
-                                name="Password"
-                                placeholder="Password"
-                            />
-
-                            <FormBtn style="text-align: center"
-
-                                onClick={this.handleFormSubmit}
-                            >
-                                Log In
-                            </FormBtn>
-                        </form>
-
-                    </Col>
-
-                </Row>
 
                 <span />
             </Container>

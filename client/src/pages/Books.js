@@ -109,6 +109,7 @@ class Books extends Component {
     return (
       <Container fluid>
         <StudentNav navBarSelection={this.navBarSelection}></StudentNav>
+        <button onClick={window.enter}>Enter</button>
 
         {this.state.navbarIndex == 1 ? (
           <Row>

@@ -83,7 +83,17 @@ class Books extends Component {
   navBarSelection = (index) => {
 
     this.setState({ navbarIndex: index });
+    this.loadBooks();
     //window.initialize();
+
+  }
+
+  logout = () => {
+
+    window.location = window.origin;
+    sessionStorage.removeItem('bookBusterStudent');
+    sessionStorage.removeItem('google_profile');
+    sessionStorage.removeItem('idtoken');
 
   }
 
@@ -172,7 +182,7 @@ class Books extends Component {
 
     if(timer>1){
     this.setState((state)=>({timer: state.timer-1}));
-    }else{
+    }else if(this.state.navbarIndex == 4){
       console.log(book.book_name);
       this.setState((state)=>({timer: state.timer-1}));
       API.updateBook(book._id, {pages_read: book.pages_read+1});
@@ -188,11 +198,10 @@ class Books extends Component {
     return (
       <Container fluid>
        
-        <StudentNav navBarSelection={this.navBarSelection} showViewer={this.showViewer}></StudentNav>
+        <StudentNav logout={this.logout} navBarSelection={this.navBarSelection} showViewer={this.showViewer}></StudentNav>
 
         {this.state.navbarIndex == 1 ? (
           <Row>
-            <Updater loadBooks={this.loadBooks}/>
             <Col size="md-12">
               <Jumbotron>
                 <h1>Readings</h1>
@@ -202,9 +211,11 @@ class Books extends Component {
                   {this.state.books.map((book,index) => (
                     <ListItem key={book._id}>
                         <strong>
-                          {book.book_name} by {book.authors.toString()} pages read {book.pages_read}, {book.student_name}
+                          <div>{book.book_name} by {book.authors.join(", ")}</div>
+                          <div style={{fontSize:"12px"}}>Pages read: {book.pages_read}</div>
+                          <div style={{fontSize:"12px"}}>Book length: {book.book_length}</div>
     
-                          <span style={{float:'right'}}  onClick={()=>this.setState({bookIndex: index, googleBookId: book.googlebook_id, navbarIndex: 4})}>Read</span>
+                          <span className="btn btn-success" style={{float:'right'}}  onClick={()=>this.setState({bookIndex: index, googleBookId: book.googlebook_id, navbarIndex: 4})}>Read</span>
                             
                         </strong>
                     </ListItem>

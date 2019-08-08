@@ -15,7 +15,7 @@
 
   <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="1093509902491-rq5f2e5ivb38ppepvtvkqg4fd6vojc48.apps.googleusercontent.com">
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
   
   <script>
 
@@ -65,12 +65,38 @@
   </noscript>
   <div id="root"></div>
 
-
-  <div class="g-signin2" style="position:fixed;top:0;right:0" data-onsuccess="onSignIn" data-theme="dark"></div>
-
+  <!--div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
+  <!--button id="enter">Enter</button-->
+ 
+  
+ 
   <script>
+
+    var canEnterBool = false;
+
+    function init() {
+      var googleAuth;
+      gapi.load('auth2', function() {
+      gapi.auth2.init({client_id:"1093509902491-rq5f2e5ivb38ppepvtvkqg4fd6vojc48.apps.googleusercontent.com"})
+      .then(function(){
+
+      googleAuth =  gapi.auth2.getAuthInstance();
+      googleAuth.isSignedIn.listen(canEnter);
+      console.log(canEnterBool);
+
+      console.log(googleAuth);
+      })
+      //gapi.auth2.
+      //
+     
+     
+  });
+}
+
     function onSignIn(googleUser) {
       // Useful data for your client-side scripts:
+
+     
       var profile = googleUser.getBasicProfile();
 
       var google_profile = {};
@@ -103,21 +129,15 @@
         if(response.teacher){
           
           sessionStorage.setItem('bookBusterTeacher', JSON.stringify(response.teacher));
-
-          if(window.location != window.origin + "/teacher"){
-            window.location = window.origin + "/teacher";
-            }
+       
 
         }else if(response.student){
 
-          sessionStorage.setItem('bookBusterStudent', JSON.stringify(response.student));          
-          
-          if(window.location != window.origin + "/student"){
-          //window.location = window.origin + "/student";
-            }
-
+          sessionStorage.setItem('bookBusterStudent', JSON.stringify(response.student));
+         
 
         }
+      
 
 
       }).catch(err => console.log(err))
@@ -144,6 +164,40 @@ function displayGoodJob(){
 
 
 }
+
+$('body').on('click', '#enter', function(){
+
+  console.log(canEnterBool);
+
+  if(canEnterBool){
+
+  if(sessionStorage.getItem('bookBusterTeacher')){
+
+    window.location = window.origin + "/teacher";
+
+  }
+  
+  else if(sessionStorage.getItem('bookBusterStudent')){
+
+    window.location = window.origin + "/student";
+
+  }
+}
+
+  else{
+
+    alert('You must sign in with Google first before you can enter.');
+
+  }
+})
+
+function canEnter(bool){
+
+  canEnterBool = bool;
+  console.log(canEnterBool);
+
+}
+
 
 </script>
 
