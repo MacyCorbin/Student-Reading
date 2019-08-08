@@ -200,7 +200,7 @@ class Books extends Component {
                   {this.state.books.map((book,index) => (
                     <ListItem key={book._id}>
                         <strong>
-                          {book.book_name} by {book.author} pages read {book.pages_read}
+                          {book.book_name} by {book.authors.toString()} pages read {book.pages_read}, {book.student_name}
     
                           <span style={{float:'right'}}  onClick={()=>this.setState({bookIndex: index, googleBookId: book.googlebook_id, navbarIndex: 4})}>Read</span>
                             
