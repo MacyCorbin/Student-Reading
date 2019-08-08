@@ -29,7 +29,7 @@ class Books extends Component {
   }
 
   loadBooks = () => {
-    API.getBooks()
+    API.getMyBooks(JSON.parse(sessionStorage.getItem('bookBusterStudent'))._id)
       .then(res => {
         this.setState({ books: res.data})
         //console.log(res);
