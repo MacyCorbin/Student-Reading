@@ -23,45 +23,33 @@ class Books extends Component {
 
   testAPI = () => {
 
+    //console.log({date: new Date()});
     //create student
-    const student = {
-    name: "eric",
-    username: "eric",
-    password: "eric",
-    lexile: 100,
-    }
+    //console.log( JSON.parse(window.sessionStorage.getItem('google_profile')).fullName);
+   /* const student = {
+      id_token: window.sessionStorage.getItem('idtoken'),
+      name: JSON.parse(window.sessionStorage.getItem('google_profile')).fullName
+    }*/
+    
+    //API.registerStudent(student);
 
     //create teacher
-    const teacher = {
-      name: "teacher",
-      username: "teacher",
-      password: "teacher"
+   /* const teacher = {
+      id_token: window.sessionStorage.getItem('idtoken')
     }
 
-    API.registerStudent(student);
-    API.registerTeacher(teacher);
+    
+    API.registerTeacher(teacher);*/
 
-    API.login({username: "eric", password: "eric"})
-     .then(function(response){
-      console.log(response);
-     })
-     .catch(err => console.log(err))
+    API.createAssignment({ due_date: new Date() });
 
-     API.login({username: "teacher", password: "teacher"})
-     .then(function(response){
-      console.log(response);
-     })
-     .catch(err => console.log(err))
-
-     API.createAssignment({due_date: new Date()});
-
-     API.getAssignments()
+    API.getAssignments()
       .then(response => console.log(response))
       .catch(err => console.log(err))
 
     API.getBooks()
-    .then(response => console.log(response))
-    .catch(err => console.log(err))
+      .then(response => console.log('books:' , response))
+      .catch(err => console.log(err))
 
 
   }
@@ -103,12 +91,17 @@ class Books extends Component {
   }
 
   navBarSelection = index => {
-    this.setState({navbarIndex: index});
+    this.setState({ navbarIndex: index });
   }
 
 
 
   render() {
+
+    const login = () => { };
+
+    login();
+
     return (
       <Container fluid>
         <StudentNav navBarSelection={this.navBarSelection}></StudentNav>
@@ -165,7 +158,7 @@ class Books extends Component {
 
 
 
-        {this.state.navbarIndex == 3 ? (
+        {this.state.navbarIndex == 1 ? (
 
           <Row>
             <Col size="md-12">
@@ -187,7 +180,7 @@ class Books extends Component {
               </FormBtn>
               </form>
             </Col>
-            
+
             <Col size="md-12">
               {this.state.bookSearch.length ? (
                 <List>
