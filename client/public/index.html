@@ -71,7 +71,7 @@
  
   <script>
 
-    var canEnterOrRegisterBool = true;
+    var canEnterOrRegisterBool = false;
 
     function init() {
       var googleAuth;
@@ -133,6 +133,7 @@
           }
        
           sessionStorage.setItem('bookBusterTeacher', JSON.stringify(response.teacher));
+          canEnterOrRegisterBool = true;
 
 
         }else if(response.student){
@@ -142,6 +143,7 @@
           }
           
           sessionStorage.setItem('bookBusterStudent', JSON.stringify(response.student));
+          canEnterOrRegisterBool = true;
 
         }
       
