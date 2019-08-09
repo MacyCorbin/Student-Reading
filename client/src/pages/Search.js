@@ -2,6 +2,8 @@ import React from "react";
 import SearchForm from "../components/SearchForm";
 import ResultsContainer from "../components/ResultsContainer";
 import API from "../utils/API";
+import Nav from "../components/Nav";
+import Header1 from "../components/Header1"; 
 
 class Search extends React.Component {
     constructor(props) {
@@ -15,24 +17,35 @@ class Search extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(e) {
+/*     handleChange(e) {
         e.preventDefault();
         this.setState({bookInput: e.target.value})
-        this.setState({duedateInput: e.target.value})
+       // this.setState({duedateInput: e.target.value}) */
+
+       handleChange(e) {
+        const { name, value } = e.target;
+        this.setState({
+          [name]: value
+        });
+      
+
+
     }
 
     
 
     handleSearchClick(e) {
         e.preventDefault();
-        let due_date = this.state.duedateInput
-        API.searchBooks(this.state.bookInput)
+      //  let due_date = this.state.duedateInput;
+         
+        API.searchBook(this.state.bookInput)
             .then(
                 (response) => {
-                   this.setState({bookData: response.data});
+                    console.log(response);
+                   this.setState({bookData: response.data.items});
                  /*   this.setState({bookInput: ""}); 
                    this.setState({duedateInput: ""});  */
-                   console.log(due_date);
+                   //console.log(due_date);
                   
                 }
             );
@@ -41,7 +54,13 @@ class Search extends React.Component {
     render() {
         return(
             <main>
-                 
+                 <Nav>
+
+                 </Nav>
+                 <Header1>
+
+                 </Header1>
+
                
                 <SearchForm handleChange={this.handleChange} handleSearchClick={this.handleSearchClick} 
                  />

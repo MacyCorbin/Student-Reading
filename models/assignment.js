@@ -11,13 +11,11 @@ const AssignmentSchema = new Schema({
     book_name: {type: String},    
     on_page: {type: Number, default: 0},
     pages_read: {type: Number, default: 0},
-    totalPages: {type: Number},
+    book_length: {type: Number , default: 0},
     due_date: {type: Date, required: true},
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }, 
   
-
-
 });
 
 const Assignment = mongoose.model("Assignment", AssignmentSchema);

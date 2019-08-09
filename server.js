@@ -5,21 +5,24 @@ const routes = require("./routes");
 const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT || 3001;
+// Define middleware here
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 require("./routes/api-routes")(app);
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-app.use(routes);
+//app.use(routes);
 
 // Connect to the Mongo DB
-const mongoURL = process.env.PROD_MONGODB || "mongodb://localhost/googlebooks10"
+//const mongoURL = process.env.PROD_MONGODB || "mongodb://localhost/googlebooks3"
+const mongoURL = process.env.PROD_MONGODB || "mongodb://localhost/reactreadinglist5"
 //mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist5");
 mongoose.connect(mongoURL, {useNewUrlParser: true})
   .then(() => {

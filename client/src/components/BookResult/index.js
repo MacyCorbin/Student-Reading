@@ -1,5 +1,6 @@
-import React from "react";
-import API from "";
+import React from
+ "react";
+import API from "../../utils/API";
 import {BrowserRouter as Router} from "react-router-dom";
 
 class BookResult extends React.Component {
@@ -22,14 +23,13 @@ class BookResult extends React.Component {
             img: this.props.img,
             description: this.props.description,
             googlebook_id: this.props.googlebook_id,
-            totalPages: this.props.totalPages,
+            book_length: this.props.book_length,
             book_name: this.props.title,
-            due_date: this.props.due_date
-          
+            due_date: this.props.due_date       
             
         }
         e.preventDefault();
-        API.addBookToDB(bookData).then(
+     /*    API.addBookToDB(bookData).then(
             (response) => {
                 console.log(response);
             }
@@ -37,7 +37,14 @@ class BookResult extends React.Component {
             (err) => {
                 console.log(err);
             }
-        );
+        ); */
+
+        API.createAssignment(bookData)
+        .catch(
+            (err) => {
+                console.log(err);
+            }
+        ); 
     }
 
     handleDeleteClick(e) {
@@ -62,7 +69,7 @@ class BookResult extends React.Component {
                     <div className="aboutBook">
                         <h4>Due Date: {this.props.due_date}</h4>
                         <h4>{this.props.title}</h4> 
-                        <h4>Book Length : {this.props.totalPages} pages</h4> 
+                        <h4>Book Length : {this.props.book_length} pages</h4> 
                         <p>By: {(this.props.authors)? this.props.authors.join(", "): "N/A"}</p>
                     </div>
                     <div className="btnDiv">
@@ -72,7 +79,7 @@ class BookResult extends React.Component {
                         }
                         {
                             // if this.props.path is "/" display save button else display Delete button
-                            (this.props.path === "/")? <button type="button" name="save" onClick={this.handleSaveClick} disabled={this.state.saved}>{(this.state.saved)? "Saved" : "Save"}</button> : <button type="button" name="Delete" onClick={this.handleDeleteClick} disabled={this.state.deleted}>Delete</button>
+                            (this.props.path === "/teacher")? <button type="button" name="save" onClick={this.handleSaveClick} disabled={this.state.saved}>{(this.state.saved)? "Saved" : "Save"}</button> : <button type="button" name="Delete" onClick={this.handleDeleteClick} disabled={this.state.deleted}>Delete</button>
                         
                         }
                     </div>

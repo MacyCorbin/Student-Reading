@@ -3,7 +3,7 @@ import BookResult from "../BookResult";
 
 function ResultsContainer(props) {
    
-    if(props.path === "/") {
+    if(props.path === "/teacher") {
        //const date = req.body.due_date
         return(
             <div id="resultsContainer">
@@ -11,13 +11,13 @@ function ResultsContainer(props) {
                
                 {props.bookData.map((assignment) => { 
                     const bookInfo = assignment.volumeInfo; 
-                    const bookInfo1 = assignment.searchInfo;                 
+                    const bookInfo1 = assignment.id;                 
                     return <BookResult
                     title={bookInfo.title}
                     authors={bookInfo.authors}
                     description={bookInfo.description}
-                    totalPages={bookInfo.pageCount}
-                    googlebook_id ={bookInfo1.id}
+                    book_length={bookInfo.pageCount}
+                    googlebook_id ={bookInfo1}
                     due_date = {props.due_date}     
                     book_name={bookInfo.title}
                     link={bookInfo.canonicalVolumeLink}                     
@@ -37,7 +37,7 @@ function ResultsContainer(props) {
                         title={assignment.title}
                         authors={assignment.authors}
                         description={assignment.description}
-                        totalPages={assignment.totalPages}
+                        book_length={assignment.book_length}
                         book_name={assignment.title}  
                         googlebook_id={assignment.googlebook_id}
                         link={assignment.link}

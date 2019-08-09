@@ -6,7 +6,7 @@ function Nav() {
         <nav>
 
             <h2>BookBuster</h2>
-            <Link to="/">Create Assignment </Link>
+            <Link to="/teacher">Create Assignment </Link>
             <Link to="/saved">Assignement List</Link>
             <Link to="/saved">Student Progress</Link>
         </nav>

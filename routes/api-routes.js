@@ -1,4 +1,5 @@
 require("dotenv").config();
+//const router = require("express").Router();
 const axios = require("axios");
 const db = require("../models");
 const path = require("path");
@@ -18,6 +19,7 @@ module.exports = function(app) {
     });
 
     app.post("/search", (req, res) => {
+        console.log("request " + req);
         // set bookTitle to the req.body.title with spaces replaced with plus signs(+)
         let bookTitle = req.body.title.replace(/\s/g, "+");
         axios.get(
@@ -37,6 +39,7 @@ module.exports = function(app) {
 
     app.post("/api/assignments", (req, res) => {
        // let date = req.body.due_date;
+       console.log (req.body);
         db.Assignment.create(req.body).then(
             (response) => {
                 res.json({successful: response});
@@ -56,7 +59,7 @@ module.exports = function(app) {
             }
         ).catch(
             (err) => {
-                rres.json({error: err});
+                res.json({error: err});
             }
         );
     });
