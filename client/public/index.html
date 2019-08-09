@@ -81,9 +81,9 @@
 
       googleAuth =  gapi.auth2.getAuthInstance();
       googleAuth.isSignedIn.listen(canEnter);
-      console.log(canEnterOrRegisterBool);
+      //console.log(canEnterOrRegisterBool);
 
-      console.log(googleAuth);
+      //console.log(googleAuth);
       })
       //gapi.auth2.
       //
@@ -117,6 +117,14 @@
       var id_token = googleUser.getAuthResponse().id_token;
       sessionStorage.setItem('idtoken', id_token);
       //console.log("ID Token: " + id_token);
+      if(sessionStorage.getItem('bookBusterStudent')){
+            sessionStorage.removeItem('bookBusterStudent');
+      }
+      
+      if(sessionStorage.getItem('bookBusterTeacher')){
+            sessionStorage.removeItem('bookBusterTeacher');
+          }
+          
 
       $.ajax({
         url: "/api/login",
@@ -124,24 +132,22 @@
         data: {id_token: id_token}
       }).then(function(response) {
 
-        console.log(response);
+        //console.log(response);
 
         if(response.teacher){
-
-          if(sessionStorage.getItem('bookBusterStudent')){
-            sessionStorage.removeItem('bookBusterStudent');
-          }
-       
+          
           sessionStorage.setItem('bookBusterTeacher', JSON.stringify(response.teacher));
           canEnterOrRegisterBool = true;
+          //only after sign in should they be able to enter
+          // previously, if a user signed out of google and logged out, they could still reenter
+          //this was because all the needed information to enter was there, and the bool was set to true on page load
+          //so in summary, if they are signed in and the information is stored in session storage,
+          //then they can enter, and if they sign out of their google account they can not enter
+          //still bugged it seems
 
 
         }else if(response.student){
 
-          if(sessionStorage.getItem('bookBusterTeacher')){
-            sessionStorage.removeItem('bookBusterTeacher');
-          }
-          
           sessionStorage.setItem('bookBusterStudent', JSON.stringify(response.student));
           canEnterOrRegisterBool = true;
 
@@ -176,7 +182,7 @@ function displayGoodJob(){
 
 $('body').on('click', '#enter', function(){
 
-  console.log(canEnterOrRegisterBool);
+  console.log('canenter:' + canEnterOrRegisterBool);
 
   if(canEnterOrRegisterBool){
 
@@ -203,7 +209,7 @@ $('body').on('click', '#enter', function(){
 function canEnter(bool){
 
   canEnterOrRegisterBool = bool;
-  console.log(canEnterOrRegisterBool);
+  //console.log(canEnterOrRegisterBool);
 
 }
 
