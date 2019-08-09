@@ -318,9 +318,9 @@ class Books extends Component {
           <Row>
             <Col size="md-3">
               <div className="btn-group">
-                <span style={{ width: "50px" }} className="btn btn-success" onClick={this.prevPage}>{'<'}</span>
-                <span style={{ borderLeft: "1px solid green", width: "50px" }} className="btn btn-success" onClick={this.nextPage}>{'>'}</span>
-                <span className="btn">Go to page: <input type="text" style={{ width: "50px" }} onKeyPress={this.goToPage} name="page" value={this.state.page} onChange={this.handleInputChange}></input></span>
+                <span style={{ width: "50px", display:'flex', justifyContent:"center", alignItems:"center", padding:"0" }} className="btn btn-success" onClick={this.prevPage}>{'<'}</span>
+                <span style={{ borderLeft: "1px solid green", width: "50px", display:'flex', justifyContent:"center", alignItems:"center", padding:"0" }} className="btn btn-success" onClick={this.nextPage}>{'>'}</span>
+                <span className="btn">Go to page: <input type="text" style={{ width: "50px", padding:'0', fontSize:'initial' }} onKeyPress={this.goToPage} name="page" value={this.state.page} onChange={this.handleInputChange}></input></span>
                 <span className="btn"><span className="fa fa-clock-o"></span>{this.state.timer}</span>
               </div>
             </Col>
