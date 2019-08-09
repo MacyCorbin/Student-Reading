@@ -117,6 +117,10 @@
       var id_token = googleUser.getAuthResponse().id_token;
       sessionStorage.setItem('idtoken', id_token);
       //console.log("ID Token: " + id_token);
+
+
+      //clear sessionstorage sooner, because the isSignedIn Listener was changing canEnterBool before the 
+      //session storage was updated
       if(sessionStorage.getItem('bookBusterStudent')){
             sessionStorage.removeItem('bookBusterStudent');
       }
@@ -208,7 +212,11 @@ $('body').on('click', '#enter', function(){
 
 function canEnter(bool){
 
+  if(!bool){
   canEnterOrRegisterBool = bool;
+  }
+  //only listen for if they sign out, if they sign in the signin function will change canEnterbool
+  //this is because 
   //console.log(canEnterOrRegisterBool);
 
 }
