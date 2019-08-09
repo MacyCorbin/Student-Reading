@@ -1,16 +1,25 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const assignmentSchema = new Schema({
-    googlebook_id: String,
-    due_date: {type: Date, required: true},
-    book_name: {type: String, default: "not chosen"},
+const AssignmentSchema = new Schema({
+    title: String,
     authors: [String],
-    book_length: {type: Number, default: 0},
+    description: String,
+    img: {type: {String}, },
+    link: {type: String,},
+    googlebook_id: {type: String, default: "not chosen" },
+    book_name: {type: String},    
+    on_page: {type: Number, default: 0},
+    pages_read: {type: Number, default: 0},
+    totalPages: {type: Number},
+    due_date: {type: Date, required: true},
     createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now }
+    updatedAt: { type: Date, default: Date.now }, 
+  
+
+
 });
 
-const Assignment = mongoose.model("Assignment",  assignmentSchema);
-
+const Assignment = mongoose.model("Assignment", AssignmentSchema);
 module.exports = Assignment;
+
