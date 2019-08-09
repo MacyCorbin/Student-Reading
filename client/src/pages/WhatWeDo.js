@@ -16,7 +16,8 @@ import Card from 'react-bootstrap/Card';
 class WhatWeDo extends Component {
     state = {
         navbarIndex: 1
-      };
+    };
+    
     render() {
         return (
             <Container fluid>
@@ -25,7 +26,7 @@ class WhatWeDo extends Component {
                     <Row>
                         <Col size="md-12">
                             <div style = {{ margin: "30px"}}>
-                            <h1 style = {{ marginBottom: "20px"}}>Reading is Fun!</h1>
+                            <h2 style = {{ margin: "50px 0px 30px 0px"}}>Reading is Fun!</h2>
                             <CardDeck>
                                 <Card >
                                     <Card.Img variant="top" src="../teacher.jpg" />
@@ -34,7 +35,7 @@ class WhatWeDo extends Component {
                                     <Card.Text>
                                         With BookBuster teachers can view their students' reading progression with
                                         student selected books or teacher reading assignments. Teachers can create assignments with
-                                        ease and once they are completed the assignment can be deleted. BookBuster provide easier 
+                                        ease and once they are completed the assignment can be deleted. BookBuster provides easier 
                                         communication between the teachers and parents by automatically updating student advancement 
                                         through books.
                                     </Card.Text>
