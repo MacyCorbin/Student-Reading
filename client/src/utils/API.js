@@ -5,11 +5,11 @@ export default {
   getBooks: function() {
     return axios.get("/api/books");
   },
-  // Gets the book with the given id
-  getBook: function(id) {
+  // Gets the book with the given id//changed to get a student's books
+  getMyBooks: function(id) {
     return axios.get("/api/studentbooks/" + id);
   },
-  updateBook: function(bookInfo, id){
+  updateBook: function(id, bookInfo){
     return axios.put("/api/studentbooks/" + id, bookInfo);
   },
   // Deletes the book with the given id
@@ -22,6 +22,7 @@ export default {
   deleteAssignment: function(id) {
     return axios.delete("/api/assignments/" + id);
   },
+  //Update assignment not done
   // Saves a book to the database
   login: function(loginInfo) {
     return axios.post("/api/login", loginInfo);

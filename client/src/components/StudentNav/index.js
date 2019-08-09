@@ -6,21 +6,12 @@ function StudentNav(props) {
 
     <span>
       <a className="navbar-brand" href="#" onClick={()=>props.navBarSelection(1)}>
-        Readings
-      </a>
-      <a className="navbar-brand" href="#" onClick={()=>props.navBarSelection(2)}>
-        Profile
-      </a>
-      <a className="navbar-brand" href="#" onClick={()=>props.navBarSelection(3)}>
-        Book Search
-      </a>
-      <a className="navbar-brand" href="#" onClick={()=>props.navBarSelection(4)}>
-        Book Reader
+      Student Dashboard
       </a>
     </span>
 
     <span className="navbar-right">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="#" onClick={props.logout}>
           Logout
       </a>  
     </span>

@@ -8,7 +8,7 @@ import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import { Input,FormBtn} from "../components/LoginForm";
 import MainNav from "../components/MainNav";
-import PasswordMask from 'react-password-mask';
+// import PasswordMask from 'react-password-mask';
 // import {Item, Input, Icon, Label} from "native-base"
 
 class TeacherRegister extends Component {
@@ -42,47 +42,35 @@ class TeacherRegister extends Component {
 
    
 
-    // constructor(props) {
-    //     super(props);
-    
-    //     this.state = {
-    //       hidden: true,
-    //       password: ""
-    //     };
-    
-    //     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    //     this.toggleShow = this.toggleShow.bind(this);
-    //   }
-    
-    //   handlePasswordChange(e) {
-    //     this.setState({ password: e.target.value });
-    //   }
-    
-    //   toggleShow() {
-    //     this.setState({ hidden: !this.state.hidden });
-    //   }
-    
-    //   componentDidMount() {
-    //     if (this.props.password) {
-    //       this.setState({ password: this.props.password });
-    //     }
-    // }
-
-    handleChange(e) {
-        this.setState({
-          [e.target.name]: e.target.value
-        });
-    }
-
     
     render() {
         return (
             <Container fluid>
                 <MainNav navBarSelection={this.navBarSelection}></MainNav>
-                <Jumbotron>
+                {this.state.navbarIndex == 1 ? (
                     <Row>
                         <Col size="md-12">
-                                <h2 style={{color:"#E26A25"}}> Teacher Register</h2>
+                            <Jumbotron>
+                                <h1>Teacher Register</h1>
+                            </Jumbotron>
+
+                            <div>
+                                <div style={{margin:'auto', width:'200px', marginBottom:"10px"}} className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                            </div>
+
+                            <div style={{margin:"auto", width:"fit-content", display:"block"}} onClick={this.handleFormSubmit} className="btn btn-success" id="enter">Enter</div>
+
+                        </Col>
+                    </Row>
+                ) : (
+                        <span />
+                    )}
+
+                <span />
+                {/* <Jumbotron> */}
+                    {/* <Row>
+                        <Col size="md-12"> */}
+                                {/* <h2 style={{color:"#E26A25"}}> Teacher Register</h2>
                                 <form >
                                     <Input
                                     value={this.state.username}
@@ -97,7 +85,7 @@ class TeacherRegister extends Component {
                                         // onChange={this.handlePasswordChange}
                                         name="Password"
                                         placeholder="Password"
-                                    /> */}
+                                    /> 
                                     <PasswordMask
                                         value={this.state.password}
                                         id="password"
@@ -139,11 +127,17 @@ class TeacherRegister extends Component {
                                         >
                                         Submit
                                     </FormBtn>
-                                </form>
-                            </Col>
-                        </Row>
-                    </Jumbotron>
-                <span />
+                                </form> */}
+                            {/* </Col>
+                        </Row> */}
+                    {/* </Jumbotron>
+                    <div>
+                        <div style={{margin:'auto', width:'200px', marginBottom:"10px"}} className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                    </div>
+
+                    <div style={{margin:"auto", width:"fit-content", display:"block"}} className="btn btn-success" id="enter">Enter</div>
+
+                <span /> */}
             </Container>
         );
     }

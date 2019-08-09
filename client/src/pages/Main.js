@@ -32,17 +32,19 @@ class Main extends Component {
                                     can view each student's progress.
                                </h2>
                             </Jumbotron>
+
                             <div>
                                 <div style={{margin:'auto', width:'200px', marginBottom:"10px"}} className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                             </div>
+
                             <div style={{margin:"auto", width:"fit-content", display:"block"}} className="btn btn-success" id="enter">Enter</div>
+
                         </Col>
                     </Row>
                 ) : (
                         <span />
                     )}
 
-            
                 <span />
             </Container>
         );

@@ -4,12 +4,12 @@ const booksController = require("../../controllers/booksController");
 // All routes begin with /api
 
 router.route("/books") //(X)
-  .get(booksController.findAllBooks)
+    .get(booksController.findAllBooks)
 
 router
-  .route("/studentbooks/:id") //(X)
-  .get(booksController.findBooksByStudentId)
-  .put(booksController.updateBook)
+    .route("/studentbooks/:id") //(X)
+    .get(booksController.findBooksByStudentId)
+    .put(booksController.updateBook)
 
 router
     .route("/assignments") //(X)

@@ -4,14 +4,22 @@ class BookViewer extends React.Component {
 
     componentDidMount = () => {
 
-        window.initialize();
+        this.props.resetTimer();
+        window.initialize(this.props.googleBookId, this.props.startAtPage);
+        this.props.setPage(this.props.startAtPage);
+        var canvas = document.getElementById('viewerCanvas');
+        canvas.children[0].children[0].children[1].style.display = 'none';
+        canvas.children[0].children[1].style.display = 'none';
+
+        //console.log("timerref", timerRef);
+        //console.log(canvas.children[0].children[0].children[1]);
 
     }
 
     render() {
         return (
 
-            <div id="viewerCanvas" style={{ width: '100%', height: '500px' }}></div>
+            <div id="viewerCanvas" style={{ width: '100%', height: '600px' }}></div>
 
 
         );
