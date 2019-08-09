@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-/*   // Gets all books
+   // Gets all books
   getBooks: function() {
     return axios.get("/api/books");
   },
@@ -22,15 +22,10 @@ export default {
   deleteAssignment: function(id) {
     return axios.delete("/api/assignments/" + id);
   },
-  //Update assignment not done
-  // Saves a book to the database
-  /*login: function(loginInfo) {
-    return axios.post("/api/login", loginInfo);
-  },*/
   registerTeacher: function(teacherInfo){
     return axios.post("/api/registerTeacher", teacherInfo);
   },
-  */
+  
   //Search Google Books API
 
   searchBook: function(title){
@@ -43,16 +38,19 @@ export default {
 
   registerStudent: function(studentInfo){
     return axios.post("api/registerStudent", studentInfo);
-  },
+  }
 
-getBooks: () => {
+
+  //Separate API
+
+/*getBooks: () => {
     return axios.get("/api/assignments");
 },
 /* searchBooks: (title) => {
   console.log("This the title in util API"+ " " + title);
     //return axios.post("/search", {title: title});
     return axios.post("/Search", "IT WORKS");
-}, */
+},
 
 createAssignment: function(assignmentInfo){
   return axios.post("/api/assignments", assignmentInfo)
@@ -67,7 +65,7 @@ deleteBook: (id) => {
     return axios.delete(`/api/assignments/${id}`);
 },
  
-};
+};*/
 
  
- 
+}

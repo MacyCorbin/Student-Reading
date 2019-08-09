@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
+
 import Jumbotron from "../components/Jumbotron";
-// import AddBtn from "../components/AddBtn";
-import API from "../utils/API";
-import { Link } from "react-router-dom";
+
 import { Col, Row, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
-import { Input, FormBtn } from "../components/LoginForm";
+
+
 import MainNav from "../components/MainNav";
 
 class Main extends Component {
@@ -27,7 +25,7 @@ class Main extends Component {
             <Container fluid>
                 <MainNav navBarSelection={this.navBarSelection}></MainNav>
 
-                {this.state.navbarIndex == 1 ? (
+                {this.state.navbarIndex === 1 ? (
                     <Row>
 
                         <Col size="md-12">

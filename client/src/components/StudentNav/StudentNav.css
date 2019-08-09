@@ -1,3 +1,7 @@
 .navbar{
 background-color: #99D8EA;
 }
+
+.navSelection:hover{
+cursor: pointer;
+}

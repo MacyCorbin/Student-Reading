@@ -2,6 +2,10 @@ const db = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
+
+  //////////A TEACHER INSTRUCTS THE STUDENTS TO READ A BOOK AND HANDS THAT BOOK OUT TO EACH STUDENT
+
+  //////////THESE METHODS ARE FOR GETTING INFO ON EACH STUDENT'S BOOK, LIKE HOW MANY PAGES THEY HAVE READ
   //GET (X)
   findAllBooks: function (req, res) {
     db.Book
@@ -17,12 +21,34 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+
+  ///////THIS METHOD IS FOR UPDATING A STUDENT'S BOOK, MOSTLY USED ON STUDENT PAGE TO UPDATE
+  /////PAGES READ, WHAT PAGE THEY ARE ON, ETC.
+    //PUT, id in url (X)
+    updateBook: function (req, res) {
+
+      db.Book
+        .findOneAndUpdate({ _id: req.params.id }, req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+  
+    },
+
+
+
+
+
+  ///////////////ASSIGNMENT API ROUTES
+  ///////////////EVERY BOOK IS LINKED TO AN ASSIGNMENT, SO THAT WHEN AN ASSIGNMENT IS DELETED,
+  //EVERY BOOK FOR THAT ASSIGNMENT IS ALSO DELETED
   //POST (X)
   createAssignment: function (req, res) {
+    console.log(req.body);
     db.Assignment
       .create(req.body)
       .then(function (assignmentModel) {
-       // console.log('hi');
+        
         var tempArray = []; //array holds books to be created, so that they can be created in one db.model.create
         db.Student
           .find()
@@ -31,14 +57,32 @@ module.exports = {
             studentArr.forEach(function (student) {
 
               var tempBook = {
+                //student info
                 student_id: student._id,
-                assignment_id: assignmentModel._id,
                 student_name: student.name,
-                due_date: assignmentModel.due_date,
-                googlebook_id: assignmentModel.googlebook_id,
+                
+                //assignment info
+                assignment_id: assignmentModel._id,
+
+                //book results display info
                 book_name: assignmentModel.book_name,
                 authors: assignmentModel.authors,
-                book_length: assignmentModel.book_length
+                description: assignmentModel.description,
+                img: assignmentModel.img,
+                link: assignmentModel.link,
+
+                //book viewer info
+                googlebook_id: assignmentModel.googlebook_id,
+                //on_page created by default set to 0
+
+                //completion information
+                //pages_read created by default set to 0
+                book_length: assignmentModel.book_length,
+                due_date: assignmentModel.due_date
+
+                //created at and updated at created by default
+                
+                
               };
 
               tempArray.push(tempBook);
@@ -47,7 +91,7 @@ module.exports = {
             console.log(tempArray);
             db.Book
               .create(tempArray)
-              .then(res.json(assignmentModel))
+              .then(res.json("Assignment created, books for assignment created and distributed."))
               .catch(err => //res.status(422).json(err)
               console.log(err));
 
@@ -65,7 +109,7 @@ module.exports = {
   //GET (X)
   findAllAssignments: function (req, res) {
     db.Assignment
-      .find(req.query)
+      .find() //.find(req.query) for filters from request url
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -74,23 +118,25 @@ module.exports = {
   deleteAssignment: function (req, res) {
     db.Assignment
       .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {
+        
+        db.Book.remove({ assignment_id: req.params.id })
+        .then(()=>{
+          dbModel.remove();
+        })
+        
+      })
       .catch(err => res.status(422).json(err));
 
-    db.Book.remove({ assignment_id: req.params.id });
+    
 
   },
-  //PUT, id in url (X)
-  updateBook: function (req, res) {
 
-    db.Book
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
 
-  },
+
+  /////THESE METHODS ARE FOR LOGIN AND REGISTER
   //POST (X), don't want username and password in url, which would happen i think
+  //still need this one
   login: async function (req, res) {
 
     var userid = await verify(req.body.id_token);

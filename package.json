@@ -26,6 +26,8 @@
     "google-auth-library": "^5.1.2",
     "if-env": "^1.0.4",
     "jquery": "^3.4.1",
-    "mongoose": "^5.3.16"
+    "mongoose": "^5.3.16",
+    "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.10"
   }
 }

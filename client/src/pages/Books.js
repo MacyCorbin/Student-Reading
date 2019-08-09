@@ -41,6 +41,7 @@ class Books extends Component {
     
     API.registerTeacher(teacher);*/
 
+    /*
     API.createAssignment({     
       googlebook_id: 's1gVAAAAYAAJ',
       authors: ['eric', 'peggy', 'macy'],
@@ -54,7 +55,7 @@ class Books extends Component {
     API.getBooks()
       .then(response => console.log('books:' , response))
       .catch(err => console.log(err))
-
+*/
 
   }
 

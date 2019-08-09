@@ -17,14 +17,19 @@ class BookResult extends React.Component {
     handleSaveClick = function(e) {
         this.setState({saved: true});      
         const bookData = {
-            title: this.props.title,
+            //book results display information
+            book_name: this.props.title,
             authors: this.props.authors,
             link: this.props.link,
             img: this.props.img,
             description: this.props.description,
-            googlebook_id: this.props.googlebook_id,
+            //book_length is here
             book_length: this.props.book_length,
-            book_name: this.props.title,
+
+            //book reader information
+            googlebook_id: this.props.googlebook_id,
+            
+            //due date
             due_date: this.props.due_date       
             
         }
@@ -40,6 +45,7 @@ class BookResult extends React.Component {
         ); */
 
         API.createAssignment(bookData)
+        .then(res=>console.log(res))
         .catch(
             (err) => {
                 console.log(err);
@@ -50,7 +56,7 @@ class BookResult extends React.Component {
     handleDeleteClick(e) {
         this.setState({deleted: true});
         e.preventDefault();
-        API.deleteBook(this.props.id).then(
+        API.deleteAssignment(this.props.id).then(
             (response) => {
                 console.log(response);
                 Router.dispatch(this.props.location, null)
@@ -68,9 +74,10 @@ class BookResult extends React.Component {
                 <div className="row">
                     <div className="aboutBook">
                         <h4>Due Date: {this.props.due_date}</h4>
-                        <h4>{this.props.title}</h4> 
+                        <h4>{this.props.title}</h4>
+                        <p>By: {(this.props.authors)? this.props.authors.join(", "): "N/A"}</p> 
                         <h4>Book Length : {this.props.book_length} pages</h4> 
-                        <p>By: {(this.props.authors)? this.props.authors.join(", "): "N/A"}</p>
+                        
                     </div>
                     <div className="btnDiv">
                         {
@@ -79,8 +86,12 @@ class BookResult extends React.Component {
                         }
                         {
                             // if this.props.path is "/" display save button else display Delete button
-                            (this.props.path === "/teacher")? <button type="button" name="save" onClick={this.handleSaveClick} disabled={this.state.saved}>{(this.state.saved)? "Saved" : "Save"}</button> : <button type="button" name="Delete" onClick={this.handleDeleteClick} disabled={this.state.deleted}>Delete</button>
+                            (this.props.path === "/teacher") ? <button type="button" name="save" onClick={this.handleSaveClick} disabled={this.state.saved}>{(this.state.saved)? "Saved" : "Save"}</button> : <span></span> 
+
                         
+                        }
+                        {
+                            (this.props.path === "/saved") ? <button type="button" name="Delete" onClick={this.handleDeleteClick} disabled={this.state.deleted}>Delete</button> : <span/>
                         }
                     </div>
                 </div>
