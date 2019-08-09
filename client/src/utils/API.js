@@ -24,9 +24,9 @@ export default {
   },
   //Update assignment not done
   // Saves a book to the database
-  login: function(loginInfo) {
+  /*login: function(loginInfo) {
     return axios.post("/api/login", loginInfo);
-  },
+  },*/
   registerTeacher: function(teacherInfo){
     return axios.post("/api/registerTeacher", teacherInfo);
   },
