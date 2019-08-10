@@ -20,7 +20,7 @@ import MainNav from "../components/MainNav";
      registerStudent = () => 
      
      {
-
+        console.log('registerStudent function called');
         const google_profile = JSON.parse(window.sessionStorage.getItem('google_profile'));
         const id_token = window.sessionStorage.getItem('idtoken')
         var toBeRegistered = {};
@@ -30,12 +30,14 @@ import MainNav from "../components/MainNav";
             id_token: id_token,
             name: google_profile.fullName
          }
+         console.log("toBeRegistered Object created");
         }else{
             return console.log("Not signed in to Google.");
         }
 
          API.registerStudent(toBeRegistered)
          .then(function(res){
+             console.log('API.registerStudent.then()...');
              if(res){
                  console.log("Student registered!");
                  window.location = window.origin + "/student";
