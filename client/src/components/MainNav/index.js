@@ -12,7 +12,7 @@ function MainNav(props) {
     </span>
 
     <span className="navbar" >
-      <a className="navbar"  href="/teacherregister">
+      <a className="navbar"  href="/teacherregister" >
           TEACHER REGISTER
       </a> 
       <a className="navbar" href="/studentregister">
