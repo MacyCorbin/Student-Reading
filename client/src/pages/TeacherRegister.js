@@ -67,7 +67,7 @@ import MainNav from "../components/MainNav";
                     <Row>
                         <Col size="md-12">
                             <Jumbotron>
-                                <h1>Teacher Register</h1>
+                                <h1 style={{color:"#F9D919"}}>Teacher Register</h1>
                             </Jumbotron>
 
                              <div>
