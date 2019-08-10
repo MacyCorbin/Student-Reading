@@ -24,7 +24,7 @@ app.use(routes);
 const mongoURL = process.env.MONGODB_URI || "mongodb://localhost/finaldraft"
 
 
-mongoose.connect(mongoURL, {useNewUrlParser: true})
+mongoose.connect(mongoURL, {useNewUrlParser: true, useFindAndModify: false})
   .then(() => {
     console.log("🗄 ==> Successfully connected to mongoDB.");
   })
