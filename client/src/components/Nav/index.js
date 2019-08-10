@@ -14,13 +14,13 @@ class Nav extends React.Component {
 
     render(){
     return (
-        <nav className="navbar"style={{height:"60px"}}>
+        <nav className="navbar"style={{height:"65px"}}>
 
             {/* <h2>BookBuster</h2> */}
-            <Link style={{marginLeft:"60px"}} to="/teacher">Create Assignment </Link>
-            <Link to="/saved">Assignment List</Link>
-            <Link to="/StudentProgress">Student Progress</Link>
-            <span className="navbar-right" style={{cursor:'pointer'}} onClick={this.logout}>Logout</span>
+            <Link style={{marginLeft:"60px", fontSize:"18px"}} to="/teacher">CREATE ASSIGNMENT </Link>
+            <Link to="/saved">ASSIGNMENT LIST</Link>
+            <Link to="/StudentProgress">STUDENT PROGRESS</Link>
+            <span className="navbar-right" style={{cursor:'pointer',marginRight:"60px"}} onClick={this.logout}>LOGOUT</span>
         </nav>
     );
     
