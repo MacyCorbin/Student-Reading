@@ -6,7 +6,7 @@ function MainNav(props) {
     <nav className="navbar" style = {{ paddingRight: "0px"}}>
 
     <span>
-      <a className="navbar" href="/WhatWeDo" onClick={()=>props.navBarSelection(1)}>
+      <a className="navbar" href="/WhatWeDo" style={{marginLeft:"47px"}} onClick={()=>props.navBarSelection(1)}>
         WHAT WE DO
       </a>
     </span>
