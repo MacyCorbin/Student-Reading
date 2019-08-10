@@ -6,6 +6,10 @@ color: white;
 
 .navSelection:hover{
 cursor: pointer;
-color: #33658A;
 
+
+}
+
+#navHover:hover{
+    color: #33658A;
 }
