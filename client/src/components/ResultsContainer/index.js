@@ -8,7 +8,7 @@ function ResultsContainer(props) {
        //const date = req.body.due_date
         return(
             <div id="resultsContainer">
-                <h3>Pick a Book to Read</h3>
+                <h3 style={{textAlign:"center"}}>Pick a Book to Read</h3>
                
                 {props.bookData.map((assignment) => { 
                     const bookInfo = assignment.volumeInfo; 
@@ -40,7 +40,7 @@ function ResultsContainer(props) {
         if(props.savedBooks.length > 0) {
             return(
                 <div id="resultsContainer">
-                    <h3>Assignment List</h3>
+                    <h3 style={{textAlign:"center"}}>Assignment List</h3>
                     {props.savedBooks.map((assignment) => {
                         return <BookResult
                         //book result display info
@@ -65,7 +65,7 @@ function ResultsContainer(props) {
             );
         } else {
             return(
-                 <div id="resultsContainer">
+                 <div id="resultsContainer" style={{textAlign:"center"}}>
                     <h3>Assignment List</h3>
                     <p>No Assignment Found.</p>
                 </div>
@@ -75,7 +75,7 @@ function ResultsContainer(props) {
         if(props.savedBooks.length > 0) {
             return(
                 <div id="resultsContainer">
-                    <h3>Student Progress</h3>
+                    <h3 style={{textAlign:"center"}}>Student Progress</h3>
                     {props.savedBooks.map((studentBook) => {
                         return <StudentResult
                         //book result display info
@@ -100,7 +100,7 @@ function ResultsContainer(props) {
             );
         } else {
             return(
-                 <div id="resultsContainer">
+                 <div id="resultsContainer" style={{textAlign:"center"}}>
                     <h3>Student Progress</h3>
                     <p>Nothing found.</p>
                 </div>
