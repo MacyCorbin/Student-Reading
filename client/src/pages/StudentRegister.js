@@ -52,6 +52,7 @@ import MainNav from "../components/MainNav";
      handleFormSubmit = event => {
         event.preventDefault();
 
+        console.log('clicked');
         if(window.canEnterOrRegisterBool){
          this.registerStudent();
         }
