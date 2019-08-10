@@ -50,7 +50,7 @@ import MainNav from "../components/MainNav";
 
          event.preventDefault();
 
-        if(window.sessionStorage.getItem('google_profile') & window.sessionStorage.getItem('idtoken')){
+        if(window.sessionStorage.getItem('google_profile') && window.sessionStorage.getItem('idtoken')){
         this.registerTeacher();
         }
 
