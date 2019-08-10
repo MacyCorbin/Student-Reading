@@ -5,7 +5,7 @@ function StudentNav(props) {
   return (
     <nav className="navbar navbar-dark bg">
 
-      <span className="navSelection navbar-brand" href="#" onClick={()=>props.navBarSelection(1)}>
+      <span className="navSelection navbar-brand"style={{paddingLeft:"30px"}} href="#" onClick={()=>props.navBarSelection(1)}>
       Student Dashboard
       </span>
 

@@ -55,24 +55,41 @@ h3 {
   font-size: 1.5rem;
 }
 
-  #resultsContainer {
+#resultsContainer {
   color: white;
   background-color: #33658A;
-  padding: .5vw;
+  margin-bottom: 3.5vw;
+  border-radius: 10px;
+  margin: 5vw;
+  font-size: 1rem;
+  padding: 3vw;
+}
+
+/* #resultsContainer {
+  font-size: 1rem;
+  border-radius: 10px;
+
+} */
+
+#resultsContainer h3 {
+  margin-bottom: 3.5vw;
+  border-radius: 10px;
+  font-size: 1rem;
   
-  margin: 1vw;
-  font-size: 3vw;
 }
 
 
 #searchContainer {
   color: white;
   background-color: #33658A;
+  border-radius: 10px;
   padding: 2vw;
   width: 40%;
   margin: 2vw;
   font-size: 3vw;
 }
+
+
 
 form {
   padding: 1rem 0 1.5rem;
@@ -90,7 +107,7 @@ input {
   font-size: 1.25vw;
 }
 
-button {
+/* button {
   margin: 1vw 0;
   border-radius: 0;
   border: none;
@@ -98,24 +115,18 @@ button {
   color: white;
   padding: .75vw;
   font-size: 1.25vw;
-}
+} */
 
-form button {
+/* form button {
   position: absolute;
   right: 0;
-}
+} */
 
-button[disabled] {
+/* button[disabled] {
   background-color: #f9e39f;
-}
+} */
 
-#resultsContainer {
-  font-size: 1rem;
-}
 
-#resultsContainer h3 {
-  margin-bottom: 3.5vw;
-}
 
 .bookResult {
   background-color: white;
