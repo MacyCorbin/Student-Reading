@@ -220,7 +220,7 @@ class Books extends Component {
                           <div>Book length: {book.book_length}</div>
                         </Col>
                         <Col size="md-3">
-                          <div>{book.description.slice(0, 200) + "..."}</div>
+                          <div>{book.description?(book.description.slice(0, 200) + "...") : ("No description available.")}</div>
                           <div className="btn btn-success"><a style={{ color: 'white' }} href={book.link}>Info</a></div>
                         </Col>
 
