@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-const mongoURL = process.env.PROD_MONGODB || "mongodb://localhost/finaldraft"
+const mongoURL = process.env.MONGODB_URI || "mongodb://localhost/finaldraft"
 
 
 mongoose.connect(mongoURL, {useNewUrlParser: true})
