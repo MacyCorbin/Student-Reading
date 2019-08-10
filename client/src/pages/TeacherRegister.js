@@ -37,7 +37,8 @@ import MainNav from "../components/MainNav";
          .then(function(res){
              if(res){
                  console.log("Teacher registered!");
-                 window.location = window.origin + "/teacher";
+                 alert("Succesfully registered as teacher! Return to main page.");
+                 //window.location = window.origin + "/teacher";
              }
          })
          .catch(err=>console.log(err))

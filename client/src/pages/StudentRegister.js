@@ -45,6 +45,7 @@ import MainNav from "../components/MainNav";
 
                     console.log(res);
                         if(res){
+                            alert('Successfully registered as student! Return to the main page.');
                         //window.location = window.origin + "/student";
                         }
 
