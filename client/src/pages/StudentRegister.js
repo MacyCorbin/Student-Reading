@@ -22,7 +22,7 @@ import MainNav from "../components/MainNav";
      {
         console.log('registerStudent function called');
         const google_profile = JSON.parse(window.sessionStorage.getItem('google_profile'));
-        const id_token = window.sessionStorage.getItem('idtoken')
+        const id_token = window.sessionStorage.getItem('idtoken');
         var toBeRegistered = {};
 
         if(google_profile){
@@ -53,7 +53,7 @@ import MainNav from "../components/MainNav";
         event.preventDefault();
 
         console.log('clicked');
-        if(window.canEnterOrRegisterBool){
+        if(window.sessionStorage.getItem('google_profile') & window.sessionStorage.getItem('idtoken')){
          this.registerStudent();
         }
 
