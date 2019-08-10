@@ -28,13 +28,13 @@ nav a {
   color: white;
   text-decoration: none;
 }
-nav a:hover {
+/* nav a:hover {
   background-color: #33658A;
   height: 100%;
 }
 nav a:visited {
   color: #33658A;
-}
+} */
 
 header h1 {
   font-size: 7vw;
