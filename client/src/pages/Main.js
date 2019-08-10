@@ -18,7 +18,7 @@ class Main extends Component {
 
     render() {
         return (
-            <Container fluid>
+            <Container style={{padding:"0px", margin:"0px"}}  >
                 <MainNav navBarSelection={this.navBarSelection}></MainNav>
 
                 {this.state.navbarIndex === 1 ? (

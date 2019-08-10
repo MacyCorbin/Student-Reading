@@ -14,10 +14,10 @@ class Nav extends React.Component {
 
     render(){
     return (
-        <nav className="navbar">
+        <nav className="navbar"style={{height:"60px"}}>
 
-            <h2>BookBuster</h2>
-            <Link to="/teacher">Create Assignment </Link>
+            {/* <h2>BookBuster</h2> */}
+            <Link style={{marginLeft:"60px"}} to="/teacher">Create Assignment </Link>
             <Link to="/saved">Assignment List</Link>
             <Link to="/StudentProgress">Student Progress</Link>
             <span className="navbar-right" style={{cursor:'pointer'}} onClick={this.logout}>Logout</span>

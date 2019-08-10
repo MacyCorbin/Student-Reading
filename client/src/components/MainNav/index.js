@@ -3,7 +3,7 @@ import "./MainNav.css"
 
 function MainNav(props) {
   return (
-    <nav className="navbar navbar-dark bg" style = {{ paddingRight: "0px"}}>
+    <nav className="navbar" style = {{ paddingRight: "0px"}}>
 
     <span>
       <a className="navbar" href="/WhatWeDo" onClick={()=>props.navBarSelection(1)}>
