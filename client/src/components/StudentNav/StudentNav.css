@@ -1,7 +1,15 @@
 .navbar{
 background-color: #99D8EA;
+color: white;
+/* padding: 10px; */
 }
 
 .navSelection:hover{
 cursor: pointer;
+
+
+}
+
+#navHover:hover{
+    color: #33658A;
 }

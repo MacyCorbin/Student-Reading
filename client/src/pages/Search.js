@@ -58,7 +58,10 @@ class Search extends React.Component {
 
                  </Nav>
                  <Header1>
-
+                    
+                        <p >Welcome to the Teacher page</p>
+                        <p>Search and Save Books for Assignment</p>
+                
                  </Header1>
 
                

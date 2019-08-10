@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Jumbotron from "../components/Jumbotron";
+import Jumbotron2 from "../components/Jumbotron2";
 
 import API from "../utils/API";
 
@@ -202,9 +202,9 @@ class Books extends Component {
         {this.state.navbarIndex === 1 ? (
           <Row>
             <Col size="md-12">
-              <Jumbotron>
-                <h1>Readings</h1>
-              </Jumbotron>
+              <Jumbotron2>
+                <h1 style={{paddingTop:"9%"}}>Readings</h1>
+              </Jumbotron2>
               {this.state.books.length ? (
                 <List>
                   {this.state.books.map((book, index) => (

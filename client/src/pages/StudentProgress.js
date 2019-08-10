@@ -30,7 +30,7 @@ class StudentProgress extends React.Component {
         return (
 <main>
             <Nav></Nav>
-            <div id="resultsContainer">
+            <div>
 
                 <main>
                     <ResultsContainer savedBooks={this.state.savedBooks} path={this.props.match.path} />
