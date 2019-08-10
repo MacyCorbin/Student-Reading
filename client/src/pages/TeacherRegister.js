@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-
 import Jumbotron from "../components/Jumbotron";
-
 import API from "../utils/API.js";
-
 import { Col, Row, Container } from "../components/Grid";
-
 import MainNav from "../components/MainNav";
 
 
@@ -67,7 +63,7 @@ import MainNav from "../components/MainNav";
                     <Row>
                         <Col size="md-12">
                             <Jumbotron>
-                                <h1 style={{color:"#F9D919"}}>Teacher Register</h1>
+                                <h1>Teacher Register</h1>
                             </Jumbotron>
 
                              <div>
