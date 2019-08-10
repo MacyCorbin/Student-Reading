@@ -40,7 +40,18 @@ import MainNav from "../components/MainNav";
              console.log('API.registerStudent.then()...');
              if(res){
                  console.log("Student registered!");
-                 window.location = window.origin + "/student";
+                 API.login(sessionStorage.getItem("idtoken"))
+                 .then((res)=>{
+
+                    console.log(res);
+                        if(res){
+                        window.location = window.origin + "/student";
+                        }
+
+                    }
+                 )
+                 .catch(err => console.log(err))
+                 
              }
          })
          .catch(err=>console.log(err))
@@ -55,6 +66,9 @@ import MainNav from "../components/MainNav";
         console.log('clicked');
         if(window.sessionStorage.getItem('google_profile') && window.sessionStorage.getItem('idtoken')){
          this.registerStudent();
+        }
+        else{
+            alert('Please sign in to Google');
         }
 
      };

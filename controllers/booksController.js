@@ -25,15 +25,15 @@ module.exports = {
 
   ///////THIS METHOD IS FOR UPDATING A STUDENT'S BOOK, MOSTLY USED ON STUDENT PAGE TO UPDATE
   /////PAGES READ, WHAT PAGE THEY ARE ON, ETC.
-    //PUT, id in url (X)
-    updateBook: function (req, res) {
+  //PUT, id in url (X)
+  updateBook: function (req, res) {
 
-      db.Book
-        .findOneAndUpdate({ _id: req.params.id }, req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-  
-    },
+    db.Book
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+
+  },
 
 
 
@@ -48,7 +48,7 @@ module.exports = {
     db.Assignment
       .create(req.body)
       .then(function (assignmentModel) {
-        
+
         var tempArray = []; //array holds books to be created, so that they can be created in one db.model.create
         db.Student
           .find()
@@ -60,7 +60,7 @@ module.exports = {
                 //student info
                 student_id: student._id,
                 student_name: student.name,
-                
+
                 //assignment info
                 assignment_id: assignmentModel._id,
 
@@ -81,8 +81,8 @@ module.exports = {
                 due_date: assignmentModel.due_date
 
                 //created at and updated at created by default
-                
-                
+
+
               };
 
               tempArray.push(tempBook);
@@ -93,7 +93,7 @@ module.exports = {
               .create(tempArray)
               .then(res.json("Assignment created, books for assignment created and distributed."))
               .catch(err => //res.status(422).json(err)
-              console.log(err));
+                console.log(err));
 
 
           })
@@ -119,16 +119,16 @@ module.exports = {
     db.Assignment
       .findById({ _id: req.params.id })
       .then(dbModel => {
-        
+
         db.Book.remove({ assignment_id: req.params.id })
-        .then(()=>{
-          dbModel.remove();
-        })
-        
+          .then(() => {
+            dbModel.remove();
+          })
+
       })
       .catch(err => res.status(422).json(err));
 
-    
+
 
   },
 
@@ -154,9 +154,13 @@ module.exports = {
           db.Student
             .findOne({ google_id: userid })
             .then(dbModel2 => {
-              if(dbModel2){
+              if (dbModel2) {
                 res.json({ student: dbModel2 })
               }
+              else {
+                res.json(null);
+              }
+
             })
             .catch(err => res.status(422).json(err));
 
@@ -172,22 +176,22 @@ module.exports = {
   createTeacher: async function (req, res) {
 
     var userid = await verify(req.body.id_token);
-/*
-{
-  id_token: sessionStorage.getItem('idtoken'),
-  name: JSON.parse(sessionStorage.getItem('google_profile')).fullName
-
-}
-
-*/
-  if(userid){
-    db.Teacher
-      .create({
-        google_id: userid,
-        name: req.body.name
-      })
-      .then(res.json(true))
-      .catch(err => console.log(err));
+    /*
+    {
+      id_token: sessionStorage.getItem('idtoken'),
+      name: JSON.parse(sessionStorage.getItem('google_profile')).fullName
+    
+    }
+    
+    */
+    if (userid) {
+      db.Teacher
+        .create({
+          google_id: userid,
+          name: req.body.name
+        })
+        .then(res.json(true))
+        .catch(err => console.log(err));
     }
 
   },
@@ -196,14 +200,14 @@ module.exports = {
 
     var userid = await verify(req.body.id_token);
 
-    if(userid){
-    db.Student
-      .create({
-        google_id: userid,
-        name: req.body.name
-      })
-      .then(res.json(true))
-      .catch(err => console.log(err));
+    if (userid) {
+      db.Student
+        .create({
+          google_id: userid,
+          name: req.body.name
+        })
+        .then(res.json(true))
+        .catch(err => console.log(err));
     }
   }
 
@@ -217,12 +221,12 @@ async function verify(idToken) {
   const client = new OAuth2Client(CLIENT_ID);
 
   const ticket = await client.verifyIdToken({
-      idToken: idToken,
-      audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
-      // Or, if multiple clients access the backend:
-      //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+    idToken: idToken,
+    audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+    // Or, if multiple clients access the backend:
+    //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
   })
-      .catch(console.error);
+    .catch(console.error);
 
   const payload = ticket.getPayload();
   const userid = payload['sub'];

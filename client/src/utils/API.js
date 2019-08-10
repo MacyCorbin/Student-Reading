@@ -25,7 +25,9 @@ export default {
   registerTeacher: function(teacherInfo){
     return axios.post("/api/registerTeacher", teacherInfo);
   },
-  
+  login: function(id_token){
+    return axios.post("/api/login", {id_token: id_token});
+  },
   //Search Google Books API
 
   searchBook: function(title){
