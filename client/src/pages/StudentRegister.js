@@ -45,7 +45,7 @@ import MainNav from "../components/MainNav";
 
                     console.log(res);
                         if(res){
-                        window.location = window.origin + "/student";
+                        //window.location = window.origin + "/student";
                         }
 
                     }
