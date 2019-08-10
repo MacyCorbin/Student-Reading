@@ -26,7 +26,7 @@ class Main extends Component {
 
                         <Col size="md-12">
                             <Jumbotron>
-                                <h1>Welcome to BookBuster!</h1>
+                                <h1 style={{paddingTop:"3%"}}>Welcome to BookBuster!</h1>
                                 <h2>BookBuster is a learning tool that keeps students on track with reading goals and teachers
                                     can view each student's progress.
                                </h2>

@@ -1,11 +1,15 @@
 .navbar{
 background-color: #99D8EA;
+color: white;
+/* padding: 10px; */
 }
 
 .navSelection:hover{
 cursor: pointer;
+
+
 }
 
-span:hover{
+#navHover:hover{
     color: #33658A;
 }

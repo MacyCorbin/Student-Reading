@@ -26,7 +26,7 @@ function Header1({ children }) {
         style={{backgroundSize:"cover", textShadow:"3px 3px 3px rgba(0,0,0,0.5)",
         backgroundRepeat:"no-repeat", color:"white", backgroundImage:"url(books-2.jpg)", 
         clear: "both", textAlign: "center", borderRadius:"0px", height:"calc(100vw * .2511)",
-        fontSize:"4vw" }}
+        fontSize:"4vw", paddingTop:"9%"}}
         className="jumbotron"
       >
         {children}
